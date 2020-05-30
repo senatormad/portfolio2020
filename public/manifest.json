@@ -1,0 +1,15 @@
+{
+  "short_name": "portfolio2020",
+  "name": "portfolio2020",
+  "icons": [
+    {
+      "src": "http://api.urosvulovic.com/uploads/favicon2_8bff7d89a6.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#181818",
+  "background_color": "#181818"
+}

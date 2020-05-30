@@ -1,0 +1,333 @@
+@font-face {
+  font-family: "Sudo";
+  src: url("./Fonts/Sudo/Sudo-Regular.woff2") format("woff2"), url("./Fonts/Sudo/Sudo-Regular.woff") format("woff"),
+    url("./Fonts/Sudo/Sudo-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sudo";
+  src: url("./Fonts/Sudo/Sudo-Italic.woff2") format("woff2"), url("./Fonts/Sudo/Sudo-Italic.woff") format("woff"),
+    url("./Fonts/Sudo/Sudo-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Sudo";
+  src: url("./Fonts/Sudo/Sudo-Bold.woff2") format("woff2"), url("./Fonts/Sudo/Sudo-Bold.woff") format("woff"),
+    url("./Fonts/Sudo/Sudo-Bold.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+$bg-color: #181818;
+$ln-gradient: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
+
+@mixin socialLink {
+  a .socialSvg {
+    display: inline;
+    div {
+      display: inline;
+      svg {
+        @include socialSvgImg;
+        [id^="socalGradient"] stop {
+          stop-color: #fff;
+        }
+        &:hover [id^="socalGradient"] stop:nth-child(1) {
+          stop-color: #b827fc;
+        }
+        &:hover [id^="socalGradient"] stop:nth-child(2) {
+          stop-color: #2c90fc;
+        }
+        &:hover [id^="socalGradient"] stop:nth-child(3) {
+          stop-color: #b8fd33;
+        }
+        &:hover [id^="socalGradient"] stop:nth-child(4) {
+          stop-color: #fec837;
+        }
+        &:hover [id^="socalGradient"] stop:nth-child(5) {
+          stop-color: #fd1892;
+        }
+      }
+    }
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+@mixin social_ul {
+  display: inline;
+  font-size: 1.2em;
+  padding: 0;
+  margin: 0;
+}
+
+@mixin social_ul_li {
+  display: inline;
+  margin: 1em 0.8em 0 0;
+}
+
+@mixin socialSvgImg {
+  fill: #fff;
+  width: 30px;
+  vertical-align: middle;
+}
+
+body {
+  color: white;
+  background: $bg-color;
+  font-family: Sudo;
+  font-weight: 900;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.App {
+  max-width: 768px;
+  margin: 0 auto;
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    padding: 1em 0 1.2em 0;
+    filter: grayscale(40%);
+    background-color: $bg-color;
+    text-align: center;
+    min-height: 30px;
+    @include socialLink;
+
+    ul.social {
+      @include social_ul;
+      li {
+        @include social_ul_li;
+        .socialSvg svg {
+          @include socialSvgImg;
+        }
+      }
+    }
+
+    .Typist {
+      display: none;
+    }
+  }
+
+  section.idCard {
+    border: 2px solid transparent;
+    border-image: $ln-gradient;
+    border-image-slice: 1;
+    filter: grayscale(40%);
+    display: flex;
+    margin: 4em 0;
+    padding: 1em;
+    @include socialLink;
+
+    .left {
+      display: flex;
+      img {
+        box-sizing: border-box;
+        align-self: center;
+        margin: 0;
+        min-width: 0;
+        max-width: 100%;
+        height: auto;
+        border-radius: 9999px;
+        width: 100px;
+        margin: 0;
+        box-shadow: 0 2px 4px 0 hsla(0, 0%, 0%, 0.2);
+      }
+    }
+
+    .right {
+      padding-left: 1em;
+      h1 {
+        box-sizing: border-box;
+        margin: 0.5em 0;
+        min-width: 0;
+        font-family: inherit;
+        font-weight: 700;
+        line-height: 1.125;
+        font-size: 24px;
+      }
+
+      h4 {
+        margin: 0.5em 0 1.5em 0;
+      }
+      ul {
+        @include social_ul;
+        li {
+          @include social_ul_li;
+          line-height: 3em;
+        }
+      }
+    }
+  }
+
+  section.homeWorksContainer {
+    background-color: $bg-color;
+    font-family: Sudo;
+
+    .homeWorks {
+      height: 400px;
+      filter: grayscale(40%);
+      .smallWork {
+        border: 2px solid transparent;
+        border-image: $ln-gradient;
+        border-image-slice: 1;
+        filter: grayscale(40%);
+        height: 360px;
+        margin: 0 5px;
+        background-color: rgba(24, 24, 24, 0.9);
+        .content {
+          padding: 0 1em;
+          color: white;
+        }
+        .image {
+          height: 120px;
+          display: flex;
+          align-items: center;
+          padding: 1em;
+          img {
+            width: 100%;
+          }
+        }
+        &:hover {
+          filter: grayscale(100%);
+        }
+      }
+
+      .slider-control-centerleft,
+      .slider-control-centerright {
+        background: transparent;
+        button {
+          font-size: 3em;
+          font-family: Sudo;
+          &:hover {
+            filter: grayscale(60%);
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .slider-control-bottomcenter {
+        margin-bottom: -1em;
+        button {
+          outline: none;
+        }
+      }
+    }
+
+    h4 {
+      text-align: right;
+      margin: 0;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  section.skills,
+  section.tools {
+    margin-bottom: 2em;
+    div {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      border: 2px solid transparent;
+      border-image: $ln-gradient;
+      border-image-slice: 1;
+      filter: grayscale(40%);
+      span,
+      a {
+        margin: 1em;
+        color: white;
+        font-size: 1.2em;
+        &:hover {
+          background: $ln-gradient;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          border-bottom: 1px solid transparent;
+          border-image: $ln-gradient;
+          border-image-slice: 1;
+          line-height: 1;
+        }
+      }
+    }
+  }
+
+  section.contact {
+    margin: 1em 0;
+    @include socialLink;
+    .social {
+      text-align: center;
+      padding: 2em;
+      border: 2px solid transparent;
+      border-image: $ln-gradient;
+      border-image-slice: 1;
+      filter: grayscale(40%);
+      ul {
+        @include social_ul;
+        li {
+          padding: 0 0.2em;
+          @include social_ul_li;
+          a {
+            line-height: 5em;
+            .socialSvg svg {
+              @include socialSvgImg;
+              width: 60px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .App {
+    nav {
+      display: flex;
+      justify-content: space-between;
+
+      ul.social {
+        display: inline;
+      }
+
+      .Typist {
+        display: inline;
+        font-size: 1em;
+        line-height: 2em;
+      }
+    }
+    section.idCard {
+      .left {
+        img {
+          width: 140px;
+          margin: 10px 30px;
+        }
+      }
+    }
+    section.contact {
+      .social {
+        padding: 2em;
+        ul {
+          li {
+            padding: 0 1em;
+            a {
+              line-height: 0em;
+            }
+          }
+        }
+      }
+    }
+  }
+}
