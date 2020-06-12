@@ -2,6 +2,7 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -73,6 +74,16 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './public/index.html',
       filename: './index.html',
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'public/manifest.json',
+        },
+        {
+          from: 'public/robots.txt',
+        },
+      ],
     }),
     new Dotenv(),
   ],
