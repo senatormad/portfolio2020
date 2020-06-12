@@ -22,7 +22,10 @@
   font-style: normal;
 }
 
-$bg-color: #181818;
+$color-light: #fff;
+$color-dark: #181818;
+$transition-time: 0.3s;
+
 $ln-gradient: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%);
 
 @mixin socialLink {
@@ -32,8 +35,9 @@ $ln-gradient: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 
       display: inline;
       svg {
         @include socialSvgImg;
+        color: $color-light;
         [id^="socalGradient"] stop {
-          stop-color: #fff;
+          stop-color: currentColor;
         }
         &:hover [id^="socalGradient"] stop:nth-child(1) {
           stop-color: #b827fc;
@@ -68,20 +72,51 @@ $ln-gradient: linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 
 @mixin social_ul_li {
   display: inline;
   margin: 1em 0.8em 0 0;
+  vertical-align: middle;
 }
 
 @mixin socialSvgImg {
-  fill: #fff;
   width: 30px;
   vertical-align: middle;
 }
 
 body {
   color: white;
-  background: $bg-color;
+  background: $color-dark;
   font-family: Sudo;
   font-weight: 900;
   margin: 0;
+}
+
+body.whiteMode {
+  color: $color-dark;
+  background: $color-light;
+  .App {
+    nav {
+      color: $color-dark;
+      background: $color-light;
+      ul.social li .socialSvg svg {
+        [id^="socalGradientWhite"] stop {
+          stop-color: currentColor;
+        }
+      }
+    }
+    section.skills div span, section.skills div a, section.tools div span, section.tools div a {
+      color: $color-dark;
+    }
+    section.homeWorksContainer {
+      background-color: $color-light;
+      .homeWorks .smallWork {
+        background-color: rgba(255, 255, 255, 0.8);
+        .image {
+          background: rgba(24, 24, 24, 0.6);
+        }
+        .content {
+          color: $color-dark;
+        } 
+      }
+    }
+  }
 }
 
 a {
@@ -98,7 +133,7 @@ a {
     z-index: 99;
     padding: 1em 0 1.2em 0;
     filter: grayscale(40%);
-    background-color: $bg-color;
+    background-color: $color-dark;
     text-align: center;
     min-height: 30px;
     @include socialLink;
@@ -107,10 +142,58 @@ a {
       @include social_ul;
       li {
         @include social_ul_li;
+        button {
+          background: none;
+          border: none;
+          outline: none;      
+        }
         .socialSvg svg {
           @include socialSvgImg;
         }
       }
+      .switch {
+        vertical-align: middle;
+        background: transparent;
+        border-radius: 10px;
+        cursor: pointer;
+        height: 20px;
+        position: relative;
+        width: 40px;
+        display: inline-block;
+        .switch__toggle {
+          background: $color-light;
+          border-radius: 10px;
+          display: block;
+          height: 100%;
+          transition: background $transition-time;
+          &::after {
+            background: $color-dark;
+            border-radius: 100%;
+            content: "";
+            display: block;
+            height: 15px;
+            left: 0;
+            margin: 2px;
+            position: absolute;
+            top: 0;
+            transition: transform $transition-time, background $transition-time;
+            width: 15px;
+          }
+        }
+        .switch__state {
+          opacity: 0;
+          pointer-events: none;
+          position: absolute;
+          &:checked ~ .switch__toggle {
+            background: $color-dark;
+            &::after {
+              background: $color-light;
+              transform: translate(calc(40px - 20px));
+            }
+          }
+        }
+      }
+      
     }
 
     .Typist {
@@ -170,7 +253,7 @@ a {
   }
 
   section.homeWorksContainer {
-    background-color: $bg-color;
+    background-color: $color-dark;
     font-family: Sudo;
 
     .homeWorks {
