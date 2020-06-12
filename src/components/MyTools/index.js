@@ -7,7 +7,7 @@ const Tools = ({ tools }) => {
       <div>
         {tools.map((tool) => {
           return (
-            <a href={tool.url} target="_blank" rel="noopener noreferrer">
+            <a key={tool.id} href={tool.url} target="_blank" rel="noopener noreferrer">
               {tool.name}
             </a>
           );

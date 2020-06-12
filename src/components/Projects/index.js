@@ -82,7 +82,7 @@ class Works extends Component {
             slideWidth={this.state.sliderWidth}
           >
             {this.props.works.map((work) => {
-              return <SingleWork work={work} />;
+              return <SingleWork key={work.id} work={work} />;
             })}
           </Carousel>
         </div>

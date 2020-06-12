@@ -6,7 +6,7 @@ const Skills = ({ skills }) => {
       <h2>Skills</h2>
       <div>
         {skills.map((skill) => {
-          return <span>{skill.name}</span>;
+          return <span key={skill.id}>{skill.name}</span>;
         })}
       </div>
     </section>
