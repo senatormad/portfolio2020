@@ -1,5 +1,6 @@
 @font-face {
   font-family: "Sudo";
+  font-display: swap;
   src: url("./Fonts/Sudo/Sudo-Regular.woff2") format("woff2"), url("./Fonts/Sudo/Sudo-Regular.woff") format("woff"),
     url("./Fonts/Sudo/Sudo-Regular.ttf") format("truetype");
   font-weight: 400;
@@ -8,6 +9,7 @@
 
 @font-face {
   font-family: "Sudo";
+  font-display: swap;
   src: url("./Fonts/Sudo/Sudo-Bold.woff2") format("woff2"), url("./Fonts/Sudo/Sudo-Bold.woff") format("woff"),
     url("./Fonts/Sudo/Sudo-Bold.ttf") format("truetype");
   font-weight: 900;
