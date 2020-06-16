@@ -33,7 +33,7 @@ $ yarn install
 ```
 *   Create .env file in project root and insert your backend url, e.g.:
 ```markdown
-REACT_APP_BACKEND_URL="http://api.urosvulovic.com"
+REACT_APP_BACKEND_URL="https://api.urosvulovic.com"
 ```
 *   And now you can start app:
 ```shell
