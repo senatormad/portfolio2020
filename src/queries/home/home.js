@@ -7,6 +7,7 @@ const HOME_QUERY = gql`
       lastName
       profilePic {
         url
+        width
       }
       jobTitle
     }
@@ -39,6 +40,7 @@ const HOME_QUERY = gql`
       logo {
         id
         url
+        width
       }
       screenshot {
         id

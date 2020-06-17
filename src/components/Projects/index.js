@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import Carousel from 'nuka-carousel';
 
 const SingleWork = ({ work }) => {
+  const imgUrl = (work.logo[0].width > 160) ? ([work.logo[0].url.slice(0, 9), 'thumbnail_', work.logo[0].url.slice(9)].join('')) : work.logo[0].url;
   return (
     <a href={work.url} target="_blank" rel="noopener noreferrer">
       <div className="smallWork">
         <div className="image">
-          <img src={process.env.REACT_APP_BACKEND_URL + work.logo[0].url} alt={work.logo.url} />
+          <img src={process.env.REACT_APP_BACKEND_URL + imgUrl} alt={work.logo.url} />
         </div>
         <div className="content">
           <h3>
