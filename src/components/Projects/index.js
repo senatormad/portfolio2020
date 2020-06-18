@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Carousel from 'nuka-carousel';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const SingleWork = ({ work }) => {
   const imgUrl = (work.logo[0].width > 160) ? ([work.logo[0].url.slice(0, 9), 'thumbnail_', work.logo[0].url.slice(9)].join('')) : work.logo[0].url;
@@ -7,7 +9,11 @@ const SingleWork = ({ work }) => {
     <a href={work.url} target="_blank" rel="noopener noreferrer">
       <div className="smallWork">
         <div className="image">
-          <img src={process.env.REACT_APP_BACKEND_URL + imgUrl} alt={work.logo.url} />
+          <LazyLoadImage
+            src={process.env.REACT_APP_BACKEND_URL + imgUrl}
+            alt={work.logo.url}
+            effect="blur"
+          />
         </div>
         <div className="content">
           <h3>

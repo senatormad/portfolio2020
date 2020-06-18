@@ -80,6 +80,10 @@ module.exports = merge(common, {
   module: {
     rules: [
       {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
         test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader, // 3. Extract css into files

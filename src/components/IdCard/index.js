@@ -1,12 +1,18 @@
 import React from 'react';
 import { ReactSVG } from 'react-svg';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const IdCard = ({ info, socialMenus }) => {
   const imgUrl = (info.profilePic.width > 160) ? ([info.profilePic.url.slice(0, 9), 'thumbnail_', info.profilePic.url.slice(9)].join('')) : info.profilePic.url;
   return (
     <section className="idCard">
       <div className="left">
-        <img src={process.env.REACT_APP_BACKEND_URL + imgUrl} alt={`${info.firstName}'s profile pic`} />
+        <LazyLoadImage
+          alt={`${info.firstName}'s profile pic`}
+          src={process.env.REACT_APP_BACKEND_URL + imgUrl}
+          effect="blur"
+        />
       </div>
       <div className="right">
         <h1>
