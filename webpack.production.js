@@ -6,8 +6,8 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 const common = require('./webpack.common');
-
 
 module.exports = merge(common, {
   mode: 'production',
@@ -33,6 +33,11 @@ module.exports = merge(common, {
           collapseWhitespace: true,
           removeComments: true,
         },
+      }),
+      new PreloadWebpackPlugin({
+        rel: 'preload',
+        include: 'allAssets',
+        fileBlacklist: [/\.css/, /\.js/],
       }),
     ],
     splitChunks: {

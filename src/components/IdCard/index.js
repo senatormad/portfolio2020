@@ -1,7 +1,6 @@
 import React from 'react';
 import { ReactSVG } from 'react-svg';
 
-
 const IdCard = ({ info, socialMenus }) => {
   const imgUrl = (info.profilePic.width > 160) ? ([info.profilePic.url.slice(0, 9), 'thumbnail_', info.profilePic.url.slice(9)].join('')) : info.profilePic.url;
   return (
