@@ -7,6 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const PreloadWebpackPlugin = require('preload-webpack-plugin');
+const CompressionPlugin = require('compression-webpack-plugin');
 const common = require('./webpack.common');
 
 module.exports = merge(common, {
@@ -59,6 +60,10 @@ module.exports = merge(common, {
     },
   },
   plugins: [
+    new CompressionPlugin({
+      test: /\.(js|css)$/,
+      deleteOriginalAssets: true,
+    }),
     new MiniCssExtractPlugin({ filename: '[name].[contentHash].css' }),
     new CopyPlugin({
       patterns: [
