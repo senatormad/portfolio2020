@@ -37,7 +37,7 @@ module.exports = merge(common, {
       new PreloadWebpackPlugin({
         rel: 'preload',
         include: 'allAssets',
-        fileBlacklist: [/\.css/, /\.js/],
+        fileBlacklist: [/\.css/, /\.js/, /\.ttf/, /\.woff$/, /\.txt/],
       }),
     ],
     splitChunks: {
